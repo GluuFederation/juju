@@ -1,0 +1,12 @@
+name: gluu-opendj
+summary: Gluu openDJ LDAP server
+maintainer: shouro <shouro@gluu.org>
+description: |
+  OpenDJ is a free, open source Lightweight Directory Access Protocol(LDAPv3)
+  and Directory Service Markup Language (DSMLv2) compliant directory service
+  written in the Java programming language. This is a custome build from OpenDJ
+  source code.
+categories: ["database"]
+provides:
+  opendjserver:
+    interface: gluuldap

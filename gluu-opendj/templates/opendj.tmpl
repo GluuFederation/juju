@@ -1,0 +1,39 @@
+#!/bin/sh
+
+### BEGIN INIT INFO
+# Provides:          opendj
+# Required-Start:    $local_fs $remote_fs $network
+# Required-Stop:     $local_fs $remote_fs $network
+# Should-Start:      $named
+# Should-Stop:       $named
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start opendj.
+# Description:       Start the opendj ldap server.
+### END INIT INFO
+
+# Set the path to the OpenDJ instance to manage
+INSTALL_ROOT="/opt/opendj"
+export INSTALL_ROOT
+
+cd ${INSTALL_ROOT}
+
+# Determine what action should be performed on the server
+case "${1}" in
+start)
+  "${INSTALL_ROOT}/bin/start-ds" --quiet
+  exit ${?}
+  ;;
+stop)
+  "${INSTALL_ROOT}/bin/stop-ds" --quiet
+  exit ${?}
+  ;;
+restart)
+  "${INSTALL_ROOT}/bin/stop-ds" --restart --quiet
+  exit ${?}
+  ;;
+*)
+  echo "Usage:  $0 { start | stop | restart }"
+  exit 1
+  ;;
+esac

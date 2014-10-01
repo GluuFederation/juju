@@ -1,0 +1,17 @@
+options:
+  password:
+    type: string
+    default: "passpass"
+    description: "Manager password"
+  ldap-port:
+    type: int
+    default: 1389
+    description: "ldap port"
+  ldaps-port:
+    type: int
+    default: 1636
+    description: "ldap port"
+  ldap-data:
+    type: string
+    default: ""
+    description: "additional custome ldap data, must be base64 encoded"
