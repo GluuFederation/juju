@@ -1,0 +1,8 @@
+bindDN=cn=Directory Manager
+bindPassword={bindpass}
+servers={ldaphost}:{port}
+maxconnections=3
+useSSL={ssl}
+
+baseConfigurationDN=ou=oxTrust,ou=configuration,o={org-inum},{basedn}
+createLdapConfigurationEntryIfNotExist=true
