@@ -1,0 +1,13 @@
+options:
+  idp:
+    type: string
+    default: "seed.gluu.org"
+    description: "Default idp discovery server"
+  oxdlog:
+    type: string
+    default: "/opt/oxd-server/log/oxd-server.log"
+    description: "oxd-server log file location"
+  addrel:
+    type: string
+    default: '{"dir":"","idp":""}'
+    description: "add relation with idp and protect a application"

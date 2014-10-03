@@ -1,0 +1,45 @@
+<DirectoryMatch "/{dir}">
+    AuthType Gluu_ox
+    Require valid-user
+
+    # Connect|SAML
+    AuthnType Connect
+
+    # Trusted_RP | RS_ONLY
+    AuthzType Trusted_RP
+
+    # Needed only if AuthnType=Connect
+    RequestedAMR https://schema.example.com/connect/basic
+
+    # Needed only if AuthnType=SAML
+    #SAMLRedirectUrl http://www.myexample.com/secure/redirect.php
+
+    # General
+    OxdHostAddr {oxdhostname}
+    OxdPortNum {oxdport}
+    MemcachedHostAddr 127.0.0.1
+    MemcachedPortNum 11211
+
+    # OpenID Connect Required - needed for both UMA and OpenID Connect
+    ConnectDiscoveryUrl https://{idp}/oxauth/.well-known/openid-configuration
+    ConnectRedirectUrl https://{domain}/{dir}/redirect.html
+    ClientName {domain}/{dir}
+    ClientCredsPath /var/www/{dir}/client_creds.json
+
+    Options +ExecCGI
+    SendHeaders on
+
+    # UMA
+    #UmaDiscoveryUrl https://sso-dev.legacydataaccess.com/.well-known/uma-configuration
+    #UmaResourceName TestResource
+    #UmaRsHost www.myexample.com
+    #UmaAmHost sso-dev.legacydataaccess.com "https://schema.legacydataaccess.com/uma/providence"
+    #UmaSentUserClaims givenName+issuingIDP+mail+uid
+    #UmaAttrName given_name+iss+email+name
+
+    #Logout
+    ApplicationLogoutUrl https://{domain}/{dir}/oxauth/logout
+    ApplicationPostLogoutUrl https://{idp}/oxauth/logout
+    ApplicationLogoutRedirectUrl https://{domain}/{dir}/postlogout
+</DirectoryMatch>
+

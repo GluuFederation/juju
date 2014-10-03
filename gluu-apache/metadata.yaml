@@ -1,0 +1,13 @@
+name: gluu-apache
+summary: Install gluu apache2 server
+maintainer: shouro <shouro@gluu.org>
+description: |
+  This is an custome Apache2 server, apache mod_ox and oxd server charm.
+categories: ['app-servers']
+subordinate: false
+requires:
+  gluuserver:
+    interface: openid-connect-op
+provides:
+  website:
+    interface: http
