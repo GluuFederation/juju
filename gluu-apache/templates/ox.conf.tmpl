@@ -5,41 +5,41 @@
     # Connect|SAML
     AuthnType Connect
 
-    # Trusted_RP | RS_ONLY
-    AuthzType Trusted_RP
+    # Cookie Path
+    CookiePath /ox
 
-    # Needed only if AuthnType=Connect
-    RequestedAMR https://schema.example.com/connect/basic
+    # Valid only if AuthnType=Connect
+    RequestedACR https://schema.gluu.org/openid/acr/method/saml
 
-    # Needed only if AuthnType=SAML
-    #SAMLRedirectUrl http://www.myexample.com/secure/redirect.php
+    # Valid only if AuthnType=SAML
+    #SAMLRedirectUrl http://{domain}/secure/redirect.php
 
     # General
     OxdHostAddr {oxdhostname}
     OxdPortNum {oxdport}
     MemcachedHostAddr 127.0.0.1
     MemcachedPortNum 11211
+    ClientCredsPath /var/www/{dir}/client_creds.json
+    SendHeaders on
 
     # OpenID Connect Required - needed for both UMA and OpenID Connect
     ConnectDiscoveryUrl https://{idp}/oxauth/.well-known/openid-configuration
-    ConnectRedirectUrl https://{domain}/{dir}/redirect.html
+    ApplicationLoginUrl https://{domain}/{dir}/oxauth/login
     ClientName {domain}/{dir}
-    ClientCredsPath /var/www/{dir}/client_creds.json
-
-    Options +ExecCGI
-    SendHeaders on
 
     # UMA
-    #UmaDiscoveryUrl https://sso-dev.legacydataaccess.com/.well-known/uma-configuration
+    #UmaDiscoveryUrl https://{idp}/oxauth/.well-known/uma-configuration
     #UmaResourceName TestResource
-    #UmaRsHost www.myexample.com
-    #UmaAmHost sso-dev.legacydataaccess.com "https://schema.legacydataaccess.com/uma/providence"
-    #UmaSentUserClaims givenName+issuingIDP+mail+uid
-    #UmaAttrName given_name+iss+email+name
+    #UmaRsHost {domain}
+    #GETUmaAmHost idp.example.com "https://schema.example.com/uma/readPolicy1;https://schema.example.com/uma/readPolicy2"
+    #PUTUmaAmHost idp.example.com "https://schema.example.com/uma/write"
+    #POSTUmaAmHost idp.example.com "https://schema.example.com/uma/write"
+    #DELETEUmaAmHost idp.example.com "https://schema.example.com/uma/delete"
 
     #Logout
-    ApplicationLogoutUrl https://{domain}/{dir}/oxauth/logout
-    ApplicationPostLogoutUrl https://{idp}/oxauth/logout
-    ApplicationLogoutRedirectUrl https://{domain}/{dir}/postlogout
+    ApplicationDestinationUrl http://{domain}/{dir}/dest.html
+    ApplicationLogoutUrl https://{domain}/{dir}/logout
+    ApplicationPostLogoutUrl https://schema.example.com/oxauth/seam/resource/restv1/oxauth/end_session
+    ApplicationLogoutRedirectUrl https://{domain}/{dir}
 </DirectoryMatch>
 
