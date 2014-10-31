@@ -1,0 +1,5 @@
+options:
+  charm-name:
+    type: string
+    default: "gluu-ce"
+    description: "name of this charm, do not change it"

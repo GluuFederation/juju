@@ -1,0 +1,11 @@
+name: gluu-server
+summary: gluu community edition for OpenID Connect OP and UMA AS
+maintainer: Shouro <shouro@gluu.org>
+description: |
+  This charm deploy gluu-server.
+categories:
+  - app-servers
+subordinate: false
+provides:
+  gluuserver:
+    interface: openid-connect-op
