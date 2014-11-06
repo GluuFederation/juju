@@ -30,7 +30,7 @@ def run(command, exit_on_error=True, cwd=None):
             raise
 
 
-def get_public_ip():
+def unit_public_ip():
     this_host = run("unit-get public-address")
     return this_host.strip()
 
@@ -83,6 +83,11 @@ def stop():
 @hooks.hook('gluuserver-relation-joined')
 def joined():
     log('gluu-server relation joined called...')
+    rel_data  = {
+                    'unit' : 'gluu-server',
+                    'host' : unit_public_ip(),
+                }
+    hookenv.relation_set(rel_data)
 
 
 @hooks.hook('gluuserver-relation-departed')

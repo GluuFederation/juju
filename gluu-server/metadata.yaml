@@ -1,9 +1,9 @@
 name: gluu-server
-summary: gluu community edition for OpenID Connect OP and UMA AS
+summary: The Gluu Server CE provides a packaged instance of oxAuth and GluuLDAP and oxTrust.
 maintainer: Shouro <shouro@gluu.org>
 description: |
   This charm deploy gluu-server.
-categories:
+tags:
   - app-servers
 subordinate: false
 provides:
