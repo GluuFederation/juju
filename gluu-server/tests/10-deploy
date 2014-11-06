@@ -1,12 +1,12 @@
-#!/usr/bin/python3
+#!/usr/bin/python
 
 import amulet
 import requests
 
 d = amulet.Deployment()
 
-d.add('gluu-ce')
-d.expose('gluu-ce')
+d.add('gluu-server')
+d.expose('gluu-server')
 
 try:
     d.setup(timeout=900)
@@ -16,7 +16,7 @@ except amulet.helpers.TimeoutError:
 except:
     raise
 
-unit = d.sentry.unit['gluu-ce/0']
+unit = d.sentry.unit['gluu-server/0']
 
 # test we can access over http
 page = requests.get('http://{}'.format(unit.info['public-address']))
