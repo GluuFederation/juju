@@ -1,5 +1,5 @@
 name: gluu-server
-summary: The Gluu Server CE provides a packaged instance of oxAuth and GluuLDAP and oxTrust.
+summary: Gluu Server provides a package of oxAuth and GluuLDAP and oxTrust.
 maintainer: Shouro <shouro@gluu.org>
 description: |
   This charm deploy gluu-server.
