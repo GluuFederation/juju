@@ -1,8 +1,10 @@
 name: gluu-server
-summary: Gluu Server provides a package of oxAuth and GluuLDAP and oxTrust.
+summary: The Gluu Server is a free and open source access management tool.
 maintainer: Shouro <shouro@gluu.org>
 description: |
-  This charm deploy gluu-server.
+  The Gluu Server includes an OpenID Connect Identity Provider (IDP) and UMA
+  Authorization Server (AS), and is engineered to support robust enterprise
+  requirements for uptime and availability.
 tags:
   - app-servers
 subordinate: false

@@ -1,9 +1,11 @@
 # Overview
 
-The Gluu Server CE provides a packaged instance of oxAuth, GluuLDAP, and
-oxTrust. It is the minimal services an organization needs to leapfrog the
-failed-protocol baggage of the last decade, and move to the best possible
-application security architecture for the modern web.
+The Gluu Server is like a router for authentication and authorization.
+It support SSO via OpenID Connect, and can be used by an organization to manage
+both inbound and outbound authentication and authorization requirements.
+Through the use of "interception scripts", system administrators can mold the
+Gluu Server to solve the exact access management task at hand, including
+protecting APIs and enforcing multi-factor authentication.
 
 # Limitations
 
