@@ -1,5 +1,5 @@
 options:
-  charm-name:
+  properties:
     type: string
-    default: "gluu-ce"
-    description: "name of this charm, do not change it"
+    default: ""
+    description: "set properties for setup, datatype must be JSON"
