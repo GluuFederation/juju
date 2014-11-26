@@ -58,6 +58,7 @@ def install():
     run('dpkg -i /tmp/{}'.format(deb))
     run('apt-get update')
     run('apt-get -y --force-yes install gluu-server')
+    host.service_start(SERVICE)
     #download setup script
     run('chroot /home/gluu-server wget {} -P /root'.format(MASTER))
     #extract setup script
@@ -97,8 +98,8 @@ def upgrade_charm():
 @hooks.hook('start')
 def start():
     log('Starting gluu-server...')
-    #host.service_restart(SERVICE) or host.service_start(SERVICE)
-    host.service_start(SERVICE)
+    host.service_restart(SERVICE) or host.service_start(SERVICE)
+    #host.service_start(SERVICE)
     hookenv.open_port(80)
     hookenv.open_port(443)
 
