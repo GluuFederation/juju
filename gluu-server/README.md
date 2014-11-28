@@ -17,4 +17,4 @@ gluu server will not work in lxc container.
 '{"IP":"public-ip-address-of-your-box","HOSTNAME":"your-hostname.org","ORGNAME":"your-org-name","COUNTRYCODE":"US","CITY":"Austin","STATE":"TX","EMAIL":"support@anycom.com","LDAPPASS":"abcd5678"}'
 
 You can only set this once, after that charm will discard any change in 'properties'.
-JSON value must not blank.
+JSON value must not blank and must be string.

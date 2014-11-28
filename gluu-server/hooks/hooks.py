@@ -18,6 +18,7 @@ log = hookenv.log
 SERVICE = 'gluu-server'
 RIPO = 'http://repo.gluu.org/GLUU/ubuntu/pool/gluu/Gluu-CE-Repo-1.9-0.amd64.deb'
 MASTER = 'https://github.com/GluuFederation/community-edition-setup/archive/master.zip'
+NTV = 8
 
 #run any command
 def run(command, exit_on_error=True, cwd=None):
@@ -73,11 +74,20 @@ def config_changed():
             log("config['{}'] changed from {} to {}".format(
                 key, config.previous(key), config[key]))
 
-    if config.changed('properties'):
+    if config.changed('properties'): 
         locked = os.path.isfile('/var/lock/gluu-server-juju.lock')
         if not locked:
             try:
                 properties = json.loads(config['properties'])
+                #validation
+                if len(properties) != NTV:
+                    log('#gluu-server some properties are missing...')
+                    return
+                for key in properties.iterkeys():
+                    if not str(properties[key]).strip():
+                        log('#gluu-server properties can not be empty...')
+                        return
+
                 process_template("setup.properties.juju.tmpl", properties, '/tmp/setup.properties.juju')
                 run('cp /tmp/setup.properties.juju /home/gluu-server/root')
                 run('chroot /home/gluu-server python /root/community-edition-setup-master/setup.py -n -f /root/setup.properties.juju')
