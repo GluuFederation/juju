@@ -90,7 +90,7 @@ def config_changed():
 
                 process_template("setup.properties.juju.tmpl", properties, '/tmp/setup.properties.juju')
                 run('cp /tmp/setup.properties.juju /home/gluu-server/root')
-                run('chroot /home/gluu-server python /root/community-edition-setup-master/setup.py -n -f /root/setup.properties.juju')
+                run('chroot /home/gluu-server python /root/community-edition-setup-master/setup.py -n -d /root/community-edition-setup-master -f /root/setup.properties.juju')
                 run('touch /var/lock/gluu-server-juju.lock')
             except ValueError, e:
                 log("#gluu-server properties json data format error")
