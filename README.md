@@ -1,4 +1,4 @@
-juju
+juju (outdated)
 ====
 
 Juju Charms
